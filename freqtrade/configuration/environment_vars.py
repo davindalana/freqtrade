@@ -73,10 +73,32 @@ def _flat_vars_to_nested_dict(env_dict: dict[str, Any], prefix: str) -> dict[str
     return relevant_vars
 
 
+from pathlib import Path
+
+
+def _load_dotenv_if_present() -> None:
+    for env_path in [Path(".env"), Path("user_data/.env")]:
+        if env_path.is_file():
+            try:
+                with open(env_path, "r", encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if not line or line.startswith("#") or "=" not in line:
+                            continue
+                        k, v = line.split("=", 1)
+                        k = k.strip()
+                        v = v.strip().strip("'\"")
+                        if k not in os.environ:
+                            os.environ[k] = v
+            except Exception:
+                pass
+
+
 def environment_vars_to_dict() -> dict[str, Any]:
     """
     Read environment variables and return a nested dict for relevant variables
     Relevant variables must follow the FREQTRADE__{section}__{key} pattern
     :return: Nested dict based on available and relevant variables.
     """
+    _load_dotenv_if_present()
     return _flat_vars_to_nested_dict(os.environ.copy(), ENV_VAR_PREFIX)
