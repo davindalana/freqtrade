@@ -1,0 +1,8 @@
+{
+  "name": "Freqtrade Web Dashboard & Strategy Studio",
+  "description": "Comprehensive crypto algorithmic trading bot dashboard, strategy backtesting engine, live chart visualization, and portfolio management.",
+  "requestFramePermissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

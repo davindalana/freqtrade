@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      try {
+        const descriptor = Object.getOwnPropertyDescriptor(window, 'fetch') || Object.getOwnPropertyDescriptor(Window.prototype, 'fetch');
+        if (descriptor && !descriptor.writable && descriptor.configurable !== false) {
+          const origFetch = window.fetch.bind(window);
+          Object.defineProperty(window, 'fetch', {
+            value: origFetch,
+            writable: true,
+            configurable: true
+          });
+        }
+      } catch (e) {}
+    </script>
+    <title>Freqtrade Web Dashboard & Strategy Studio</title>
+    <meta name="description" content="Comprehensive crypto algorithmic trading bot dashboard, strategy backtesting engine, live chart visualization, and portfolio management." />
+    <meta property="og:title" content="Freqtrade Web Dashboard & Strategy Studio" />
+    <meta property="og:description" content="Comprehensive crypto algorithmic trading bot dashboard, strategy backtesting engine, live chart visualization, and portfolio management." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-slate-950 text-slate-100 antialiased selection:bg-emerald-500 selection:text-slate-950">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
