@@ -71,6 +71,13 @@ class RegimeTrendPullback(IStrategy):
                 "stop_duration_candles": 720,
                 "max_allowed_drawdown": 0.15,
             },
+            {
+                "method": "LowProfitPairs",
+                "lookback_period_candles": 48,
+                "trade_limit": 2,
+                "stop_duration_candles": 24,
+                "required_profit": 0.0,
+            },
         ]
 
     # ---------- Indicators ----------
